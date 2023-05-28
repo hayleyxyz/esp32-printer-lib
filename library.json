@@ -12,5 +12,10 @@
     "license": "MIT",
     "version": "0.1.0",
     "frameworks": "arduino",
-    "platforms": "espressif32"
+    "platforms": "espressif32",
+    "export": {
+        "include": [
+            "src"
+        ]
+    }
 }
