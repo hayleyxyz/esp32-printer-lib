@@ -26,5 +26,5 @@ private:
     size_t remainingPacketFooterLength = 0;
     char headerBuffer[sizeof(PacketHeader)];
     uint32_t headerIndex = 0;
-    u_int8_t checksum = 0;
+    uint8_t checksum = 0;
 };
