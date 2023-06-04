@@ -4,7 +4,7 @@
 
 enum PrinterCommand : uint8_t
 {
-    SetPaperSize = 0xA1,
+    SetPaperDPI = 0xA1,
     PrintData = 0xA2,
     Status = 0xA3,
     SetHeat = 0xA4,
@@ -21,6 +21,8 @@ const char* printerCommandToString(uint8_t command)
 {
     switch (command)
     {
+    case PrinterCommand::SetPaperDPI:
+        return "SetPaperDPI";
     case PrinterCommand::PrintData:
         return "PrintData";
     case PrinterCommand::Status:
