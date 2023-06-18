@@ -2,6 +2,8 @@
 #include "PrinterCommand.h"
 #include "Checksum8Bit.h"
 #include "StreamingPacketParser.h"
+#include <Arduino.h>
+#include <esp_cpu.h>
 
 void StreamingPacketParser::parse(uint8_t* data, size_t length) {
     size_t remainingDataLength = length;
@@ -46,7 +48,11 @@ void StreamingPacketParser::parse(uint8_t* data, size_t length) {
 
         checksum = 0;
 
-        printf("Command: (%x) %s | ", header->command, printerCommandToString(header->command));
+        auto ms = pdTICKS_TO_MS(esp_cpu_get_ccount());
+
+        Serial.print(ms, DEC);
+
+        printf(" Command: (%x) %s | ", header->command, printerCommandToString(header->command));
 
         state = ParseState::Data;
     }
